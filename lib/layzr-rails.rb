@@ -50,7 +50,7 @@ ActionView::Helpers::AssetTagHelper.module_eval do
   def to_lazy_image(image_html)
     img = Nokogiri::HTML::DocumentFragment.parse(image_html).at_css("img")
 
-    img["data-progressive"] = img["src"]
+    img["data-src"] = img["src"]
     img["src"] = Layzr::Rails.configuration.placeholder
 
     img.to_s.html_safe
